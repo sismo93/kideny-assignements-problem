@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Author: Aliaksei Vainilovich
-# ID: insert ulb id (000492918)
+# Author:wassim kezai 
+# ID: insert ulb id (000357375)
 
 from networkx import DiGraph, simple_cycles
 
