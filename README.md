@@ -38,6 +38,10 @@ d5|    |    |0.7 |   |    |
 d6|    |    |    |   |0.9 |0.8
 
 
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content 
 
 example of kidney exchange assignment is : d1 gives to p2, d2 gives to p1, d5
 gives to p3, d3 gives to p4, d4 gives to p5 and d6 gives to p6.
