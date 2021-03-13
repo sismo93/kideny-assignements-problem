@@ -72,30 +72,28 @@ NB: All indices start at 0.
 
 
 We now see an ad hodc algorithm to solve our problem that does not need any solver. Given a feasible
-solution x, let us define the residual network G(x) := (V, F(x) ∪ B(x))). We define
+solution x, let us define the residual network G(x) := (V, F(x) ∪ B(x))). We define:
+
 • the set of forward arcs F(x) := {(u, v) ∈ A : xuv = 0}, which contains the arcs in A that are not selected
-in the the feasible solution x, and
+in the the feasible solution x
+
 • the set of backward arcs B(x) := {(v, u) : (u, v) ∈ A, xuv = 1}, which contains the reverse arcs of those
 selected in x.
-Furthermore, we define their cost by
-w¯uv =
-{
-wuv, if (u, v) ∈ F(x),
-−wvu, if (u, v) ∈ B(x).
-It is possible to show that there is a cycle C in the residual network G(x) having a strictly positive cost
-w¯(C) = ∑
-e∈C∩(F (x)∪B(x))
-w¯e,
-2
-if and only if x is not optimal. More precisely, for any positive cost cycle C w.r.t. w¯ in G(x), and defining
-xuv(C) :=
 
-0, if (u, v) ∈/ C and (v, u) ∈/ C,
-1, if (u, v) ∈ C,
-−1, if (v, u) ∈ C,
+Furthermore, we define their cost by 
+
+                                W_uv ={W_uv, if (u, v) ∈ F(x) | −W_vu, if (u, v) ∈ B(x)}.
+
+It is possible to show that there is a cycle C in the residual network G(x) having a strictly positive cost
+
+                              w(C) = ∑ W_e ,e ∈ C∩(F(x)∪B(x))
+
+if and only if x is not optimal. More precisely, for any positive cost cycle C w.r.t. w¯ in G(x), and defining
+   
+            xuv(C) :={ 0, if (u, v) ∈/ C and (v, u) ∈/ C|1, if (u, v) ∈ C|−1, if (v, u) ∈ C,}
+ 
 it is possible to prove that x + x(C) is still feasible (within bounds [0, 1] and satisfying the flow conservation)
 and has a strictly better objective value than x. This means that we can iteratively find positive cost cycles
 in the residual graph and update x ← x + x(C) until no positive cost cycle can be found in the residual
 graph.
-Implement the algorithm and check that the values match with the results obtained in the previous
-section.
+
