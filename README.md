@@ -27,11 +27,17 @@ patients. The cost associated to this arc is wdi,pj = cij .
 , di), there is an arc (pi
 , di). The cost associated to this arc is wpi,di = 0.
 Consider for example n = 6 pairs with the compatibilities in Table 1. We obtain the network depicted in
-    p1  p2  p3  p4  p5  p6
-d1 0.5 0.6
-d2 0.8 0.4
-d3             0.4
-d4         0.5     0.5
+  | p1 | p2 | p3  p4  p5  p6
+d1|0.5 |0.6  
+d2|0.8 |0.4
+d3|    |        0.4
+d4|    |    0.5     0.5
+
+
+
+| Patients | #1  | #2  |
+| :-----: | :-: | :-: |
+| Donors | 301 | 283 |
 d5         0.7
 d6                  0.9 0.8
 
