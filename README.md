@@ -13,19 +13,14 @@ In this project, we solve the kidney assignment problem via Integer Programming 
 of maximizing the success rate of the transplantations overall.
 
 ## Model
-Consider n patient-donor pairs (pi
-, di), and define cij as the compatibility of donor di with patient pj . For
-any i ∈ {1, ..., n}, let p(i) be the set of indices j ∈ {1, ..., n} such that pj is compatible with di
-. Let us
-consider the oriented network G = (V, A) where
+Consider n patient-donor pairs (pi, di)a nd define C_ij as the compatibility of donor di with patient pj .
+For any i ∈ {1, ..., n}, let p(i) be the set of indices j ∈ {1, ..., n} such that pj is compatible with di. 
+Let usconsider the oriented network G = (V, A) where :
 • each node is either a patient or a donor.
-• For each donor di
-, there is an arc (di
-, pj ), for each j ∈ p(i), i.e., from a donor to all its compatible
+• For each donor di, there is an arc (di, pj ), for each j ∈ p(i), i.e., from a donor to all its compatible
 patients. The cost associated to this arc is wdi,pj = cij .
-• For each patient-donor pair (pi
-, di), there is an arc (pi
-, di). The cost associated to this arc is wpi,di = 0.
+• For each patient-donor pair (pi, di), there is an arc (pi, di). The cost associated to this arc is wpi,di = 0.
+
 Consider for example n = 6 pairs with the compatibilities in Table 1. We obtain the network depicted in
   
  d\p | p1 | p2 | p3 | p4|  p5|  p6
@@ -97,3 +92,17 @@ and has a strictly better objective value than x. This means that we can iterati
 in the residual graph and update x ← x + x(C) until no positive cost cycle can be found in the residual
 graph.
 
+## mode 2
+
+
+The last model lacks from its simplicity. In practice, it is impossible to perform a cycle of more than a
+couple dozens simultaneous transplants because of the logistics implied: in fact, all the surgeries must be
+performed close to each other because live organs have a very limited lifespan. Furthermore, by law, donors
+are not forced to commit to donate organs, meaning that if there is significant delay between surgeries and
+some donor finds a way to know if his/her partner patient has already been transplanted, there is no way to
+impeach him/her to retract, breaking the entire chain he was part of.
+
+
+Given that the number of cycles in a graph is too large to include all of them from the start in the
+last formulation, we will omit the cycle constraints (3) and add them as we need them. Implement the
+following algorithm:
