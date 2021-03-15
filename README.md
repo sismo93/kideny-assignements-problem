@@ -95,7 +95,7 @@ d6   |    |    |    |   |0.9 |0.8
 example of kidney exchange assignment is : d1 gives to p2, d2 gives to p1, d5 gives to p3, d3 gives to p4, d4 gives to p5 and d6 gives to p6.
 Seeing the compatibilities cij as probabilities of successful surgery, our problem is to find an assignment maximizing the number of transplants in expected value.
 
-## model implemented in kep_ip (1).py
+## Model implemented in kep_ip (1).py
 
 
 The last model lacks from its simplicity. In practice, it is impossible to perform a cycle of more than a
