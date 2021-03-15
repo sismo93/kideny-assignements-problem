@@ -110,6 +110,7 @@ Given a maximum number M of exchanges possible per cycle of transplants,that the
 
 
 (a) Start with a set of cycles C = ∅
+
 (b) Solve the following relaxation
                                   
                                   max x ∑ W_uvX_uv                 (u,v)∈A             (1) 
@@ -121,6 +122,7 @@ Given a maximum number M of exchanges possible per cycle of transplants,that the
                                   
 i. If the current solution contains a cycle C′ performing strictly more than M exchanges, add
 C′to the pool C ← C ∪ {C′} and go back to step (b)
+
 ii. Otherwise, return the solution at hand, which is optimal.
 
 ## Code
