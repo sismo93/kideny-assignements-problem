@@ -57,11 +57,11 @@ Furthermore, we define their cost by
 
 It is possible to show that there is a cycle C in the residual network G(x) having a strictly positive cost
 
-                              w(C) = ∑ W_e ,e ∈ C∩(F(x)∪B(x))
+                              w(C) = ∑ W_e , e ∈ C∩ (F(x) ∪ B(x))
 
 if and only if x is not optimal. More precisely, for any positive cost cycle C w.r.t. w¯ in G(x), and defining
    
-            xuv(C) :={ 0, if (u, v) ∈/ C and (v, u) ∈/ C|1, if (u, v) ∈ C|−1, if (v, u) ∈ C,}
+            xuv(C) :={ 0, if (u, v) ∉  C and (v, u) ∉  C|1, if (u, v) ∈ C|−1, if (v, u) ∈ C,}
  
 it is possible to prove that x + x(C) is still feasible (within bounds [0, 1] and satisfying the flow conservation)
 and has a strictly better objective value than x. This means that we can iteratively find positive cost cycles
@@ -123,7 +123,7 @@ i. If the current solution contains a cycle C′ performing strictly more than M
 C′to the pool C ← C ∪ {C′} and go back to step (b)
 ii. Otherwise, return the solution at hand, which is optimal.
 
-# Code
+## Code
 
 kep ip.py: First script reads data from file and forms arcs compatibility
 dict, nodes set and arcs set. Then this data goes to function that create abstract
@@ -135,7 +135,7 @@ solution does not contain a cycle performing strictly more than M exchanges,
 meaning that we need modify abstract model, add new cycles to constraint and
 solve new instance again, until solution will meet this condition.
 
-kep algo.py: First script reads data from file and forms arcs compatibility
+kep algo.py:script reads data from file and forms arcs compatibility
 dict and arcs set. Then in loop it uses this data to collect froward and backward
 arcs, removes duplicated arcs from backward arcs set and creates new cost dict.
 Then it finds positive cost cycle and goes to next step of loop or breaks loop if
