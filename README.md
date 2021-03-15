@@ -15,7 +15,7 @@ of maximizing the success rate of the transplantations overall.
 
 ## Instance Structure
 
-file 
+File 
     Small.csv,Normal.csv,Large.csv
     
 First line is of the form
@@ -39,17 +39,19 @@ where
 NB: All indices start at 0.
 
 
-## algorithmes positive cycle eliminations in kep_algo.py
+## Algorithmes positive cycle eliminations in kep_algo.py
 
 
 We now see an ad hodc algorithm to solve our problem that does not need any solver. Given a feasible
 solution x, let us define the residual network G(x) := (V, F(x) ∪ B(x))). We define:
 
-• the set of forward arcs F(x) := {(u, v) ∈ A : xuv = 0}, which contains the arcs in A that are not selected
-in the the feasible solution x
+• the set of forward arcs 
+                        F(x) := {(u, v) ∈ A : xuv = 0}
+which contains the arcs in A that are not selected in the the feasible solution x
 
-• the set of backward arcs B(x) := {(v, u) : (u, v) ∈ A, xuv = 1}, which contains the reverse arcs of those
-selected in x.
+• the set of backward arcs 
+                        B(x) := {(v, u) : (u, v) ∈ A, xuv = 1}
+which contains the reverse arcs of those selected in x.
 
 Furthermore, we define their cost by 
 
@@ -63,8 +65,9 @@ if and only if x is not optimal. More precisely, for any positive cost cycle C w
    
             xuv(C) :={ 0, if (u, v) ∉  C and (v, u) ∉  C|1, if (u, v) ∈ C|−1, if (v, u) ∈ C,}
  
-it is possible to prove that x + x(C) is still feasible (within bounds [0, 1] and satisfying the flow conservation)
-and has a strictly better objective value than x. This means that we can iteratively find positive cost cycles
+It is possible to prove that x + x(C) is still feasible (within bounds [0, 1] and satisfying the flow conservation)
+and has a strictly better objective value than x.
+This means that we can iteratively find positive cost cycles
 in the residual graph and update x ← x + x(C) until no positive cost cycle can be found in the residual
 graph.
 
@@ -89,10 +92,8 @@ d4   |    |    |0.5 |   |0.5 |
 d5   |    |    |0.7 |   |    |
 d6   |    |    |    |   |0.9 |0.8
 
-example of kidney exchange assignment is : d1 gives to p2, d2 gives to p1, d5
-gives to p3, d3 gives to p4, d4 gives to p5 and d6 gives to p6.
-Seeing the compatibilities cij as probabilities of successful surgery, our problem is to find an assignment
-maximizing the number of transplants in expected value.
+example of kidney exchange assignment is : d1 gives to p2, d2 gives to p1, d5 gives to p3, d3 gives to p4, d4 gives to p5 and d6 gives to p6.
+Seeing the compatibilities cij as probabilities of successful surgery, our problem is to find an assignment maximizing the number of transplants in expected value.
 
 ## model implemented in kep_ip (1).py
 
@@ -127,7 +128,7 @@ ii. Otherwise, return the solution at hand, which is optimal.
 
 ## Code
 
-kep ip.py: First script reads data from file and forms arcs compatibility
+kep_ip.py: First script reads data from file and forms arcs compatibility
 dict, nodes set and arcs set. Then this data goes to function that create abstract
 pyomo model, with cycle limit variable, that adds extra constraint, if needed.
 Then script starts loop that creates model instance and solves it. It has two
@@ -137,7 +138,7 @@ solution does not contain a cycle performing strictly more than M exchanges,
 meaning that we need modify abstract model, add new cycles to constraint and
 solve new instance again, until solution will meet this condition.
 
-kep algo.py:script reads data from file and forms arcs compatibility
+kep_algo.py:script reads data from file and forms arcs compatibility
 dict and arcs set. Then in loop it uses this data to collect froward and backward
 arcs, removes duplicated arcs from backward arcs set and creates new cost dict.
 Then it finds positive cost cycle and goes to next step of loop or breaks loop if
